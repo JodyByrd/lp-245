@@ -239,21 +239,29 @@ nomask void set_this_player() {}
 varargs void add_worth(int value, object ob)
 {
     mixed old;
+
 #ifdef __COMPAT_MODE__
-    switch (explode(object_name(previous_object()), "/")[0]) {
+    switch (explode(object_name(previous_object()), "/")[0]) 
+    {
 #else
-    switch (explode(object_name(previous_object()), "/")[1]) {
+    switch (explode(object_name(previous_object()), "/")[1]) 
+    {
 #endif
-      default:
-	raise_error("Illegal call of add_worth.\n");
-      case "obj":
-      case "std":
-      case "room":
+        default:
+	        raise_error("Illegal call of add_worth.\n");
+        case "obj":
+        case "std":
+        case "room":
     }
-    if (!ob) {
-	if ( !(ob = previous_object(1)) )
-	    return;
+
+    if (!ob) 
+    {
+	    if ( !(ob = previous_object(1)) )
+        {
+	        return;
+        }
     }
+    
     if (intp(old = get_extra_wizinfo(ob)))
         set_extra_wizinfo(ob, old + value);
 }

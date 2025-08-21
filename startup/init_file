@@ -6,11 +6,46 @@
 # List of objects to load automatically at reboot.
 #
 ##
+obj/Living/living.c
+obj/Player/player.c
+obj/Leo/leo.c
+obj/Book/book.c
+obj/Quest/quest_obj.c
+obj/Bulletin_Boards/bull_board.c
+obj/Bulletin_Boards/wiz_bull_board.c
+obj/Bulletin_Boards/wiz_bull_board2.c
+obj/PostOffice/mail_reader.c
+##
 #
 # All lines below this comments are for loading wizard castles.
 #
+##
+
 ##
 #
 # Rooms
 #
 ##
+room/room.c
+room/def_castle.c
+
+#
+# Adventurers Guild
+#
+room/AdventurersGuild/adv_guild.c
+room/AdventurersGuild/adv_inner.c
+room/AdventurersGuild/adv_inner2.c
+
+#
+# Church
+#
+room/Church/church.c
+room/Church/attic.c
+room/Church/elevator.c
+room/Church/wiz_hall.c
+room/Church/quest_room.c
+
+#
+# Post Office
+#
+room/PostOffice/PostOffice.c

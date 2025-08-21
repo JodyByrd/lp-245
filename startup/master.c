@@ -735,7 +735,12 @@ object connect ()
 // binding the connection to it. That lfun has to return !=0 to succeed.
 
 {
-    object ob = clone_object("obj/player");
+
+    debug_message("Connecting...\n");
+
+    //
+    object ob = clone_object("obj/Player/player");
+
     if (!ob)
     {
         write("Lars says: Couldn't get your body ready ...\n");
@@ -923,7 +928,7 @@ void destruct_environment_of(object ob)
 	    object new_player;
 
 	    write(error);
-	    new_player = clone_object("obj/player");
+	    new_player = clone_object("obj/Player/player");
 	    if (!function_exists("replace_player", new_player)) {
 		destruct(new_player);
 		return;
@@ -1674,7 +1679,7 @@ mixed valid_read  (string path, string euid, string fun, object caller)
                 }
                 return ADD_SLASH(path);
             }
-            path = ({string})"obj/player"->valid_read(path);
+            path = ({string})"obj/Player/player"->valid_read(path);
             if (stringp(path))
                 return ADD_SLASH(path);
             return 0;
@@ -1796,7 +1801,7 @@ mixed valid_write (string path, string euid, string fun, object caller)
         }
         return ADD_SLASH(path);
     }
-    path = ({string})"obj/player"->valid_write(path);
+    path = ({string})"obj/Player/player"->valid_write(path);
     if (stringp(path))
         return ADD_SLASH(path);
 
