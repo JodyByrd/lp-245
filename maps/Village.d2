@@ -1,0 +1,189 @@
+# grid size
+grid-rows: 2
+grid-columns: 17
+grid-gap: 20
+
+# styles
+classes {
+
+    #
+    blank: {
+        label: ""
+        height: 50
+        style: {
+            fill: transparent
+            stroke: transparent
+        }
+    }
+
+}
+
+# rooms
+0,0.class: blank
+0,1.class: blank
+0,2.class: blank
+0,3.class: blank
+0,4: Church { Church}
+0,5.class: blank
+0,6.class: blank
+0,7.class: blank
+0,8: Yard
+0,9.class: blank
+0,10: Pub {Pub2}
+0,11.class: blank
+0,12: Shop { Shop }
+0,13.class: blank
+0,14: East Road {East Road 1}
+0,15.class: blank
+0,16.class: blank
+
+1,0.class: blank
+1,1.class: blank
+1,2.class: blank
+1,3.class: blank
+1,4.class: blank
+1,5.class: blank
+1,6.class: blank
+1,7.class: blank
+1,8.class: blank
+1,9.class: blank
+1,10.class: blank
+1,11.class: blank
+1,12.class: blank
+1,13.class: blank
+1,14.class: blank
+1,15.class: blank
+1,16.class: blank
+
+2,0: Forest {Wild1}
+2,1.class: blank
+2,2: Humpbacked\nBridge
+2,3.class: blank
+2,4: Green
+2,5.class: blank
+2,6: Track
+2,7.class: blank
+2,8: Road 1
+2,9.class: blank
+2,10.class: blank
+2,11.class: blank
+2,12: Road 2
+2,13.class: blank
+2,14: Shore
+2,15.class: blank
+2,16: Jetty { Jetty }
+
+3,0.class: blank
+3,1.class: blank
+3,2.class: blank
+3,3.class: blank
+3,4.class: blank
+3,5.class: blank
+3,6.class: blank
+3,7.class: blank
+3,8.class: blank
+3,9.class: blank
+3,10.class: blank
+3,11.class: blank
+3,12.class: blank
+3,13.class: blank
+3,14.class: blank
+3,15.class: blank
+3,16.class: blank
+
+4,0.class: blank
+4,1.class: blank
+4,2.class: blank
+4,3.class: blank
+4,4.class: blank
+4,5.class: blank
+4,6.class: blank
+4,7.class: blank
+4,8: Narrow\nAlley
+4,9.class: blank
+4,10: Bank {Bank}
+4,11.class: blank
+4,12: Adventurers\nGuild { adv_guild}
+4,13: Station {Station}
+4,14: Crop
+4,15.class: blank
+4,16.class: blank
+
+5,0.class: blank
+5,1.class: blank
+5,2.class: blank
+5,3.class: blank
+5,4.class: blank
+5,5.class: blank
+5,6.class: blank
+5,7.class: blank
+5,8.class: blank
+5,9.class: blank
+5,10.class: blank
+5,11.class: blank
+5,12.class: blank
+5,13.class: blank
+5,14.class: blank
+5,15.class: blank
+5,16.class: blank
+
+6,0.class: blank
+6,1.class: blank
+6,2.class: blank
+6,3.class: blank
+6,4.class: blank
+6,5.class: blank
+6,6.class: blank
+6,7.class: blank
+6,8: Post Office {Post Office}
+6,9: Well {Well}
+6,10.class: blank
+6,11.class: blank
+6,12.class: blank
+6,13.class: blank
+6,14.class: blank
+6,15.class: blank
+6,16.class: blank
+
+# connections
+
+# Shore
+2,14 <-> 0,14.East Road 1
+2,14 <-> 4,14
+2,14 <-> 2,16.Jetty
+2,14 <-> 2,12
+
+# Road 2
+2,12 <-> 0,12.Shop
+2,12 <-> 4,12.adv_guild
+2,12 <-> 4,13.Station
+2,12 <-> 2,8
+
+# Road 1
+2,8 <-> 0,8
+2,8 <-> 4,8
+2,8 <-> 2,12
+2,8 <-> 2,6
+
+# Track
+2,6 <-> 2,8
+2,6 <-> 2,4
+
+# Green
+2,4 <-> 0,4.Church
+2,4 <-> 2,6
+2,4 <-> 2,2
+
+# Humpbacked Bridge
+2,2 <-> 2,4
+2,2 <-> 2,0.Wild1
+
+# Yard
+0,8 <-> 0,10.Pub2
+0,8 <-> 2,8
+
+# Narrow Alley
+4,8 <-> 2,8
+4,8 <-> 6,8.Post Office
+4,8 <-> 4,10.Bank
+4,8 <-> 6,9.Well

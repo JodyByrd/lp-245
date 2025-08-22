@@ -48,21 +48,27 @@ int count(int silently) {
     return i - FREE_QUESTS;
 }
 
-void list(int i) {
-    object ob;
+void list(int i) 
+{
+
+	object ob;
 
     ob = first_inventory(this_object());
-    while(ob) {
-	if (ob->id("quest")) {
-	    string str;
-	    str = ob->short();
-	    if (!this_player()->query_quests(str))
-		i -= 1;
-	    if (i == 0) {
-		write(ob->hint() + "\n");
-		return;
-	    }
-	}
-	ob = next_inventory(ob);
+
+	while(ob) 
+	{
+		if (ob->id("quest")) 
+		{
+	    	string str;
+	    	str = ob->short();
+	    	if (!this_player()->query_quests(str))
+				i -= 1;
+	    	if (i == 0) 
+			{
+				write(ob->hint() + "\n");
+				return;
+	    	}
+		}
+		ob = next_inventory(ob);
     }
 }

@@ -15,6 +15,8 @@ obj/Bulletin_Boards/bull_board.c
 obj/Bulletin_Boards/wiz_bull_board.c
 obj/Bulletin_Boards/wiz_bull_board2.c
 obj/PostOffice/mail_reader.c
+obj/Death/death.c
+obj/Death/corpse.c
 ##
 #
 # All lines below this comments are for loading wizard castles.
@@ -46,6 +48,24 @@ room/Church/wiz_hall.c
 room/Church/quest_room.c
 
 #
+# Death
+#
+room/Death/death_room.c
+room/Death/death_mark.c
+
+#
 # Post Office
 #
 room/PostOffice/PostOffice.c
+#
+# Village
+#
+room/Village/Green.c
+room/Village/Road1.c
+room/Village/Road2.c
+room/Village/Shore.c
+room/Village/Track.c
+room/Village/Yard.c
+room/Village/Narrow_Alley.c
+room/Village/HumpbackBridge.c
+room/Village/Crop.c

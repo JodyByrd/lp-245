@@ -3,17 +3,25 @@
 object the_owner;
 string cap_name;
 
-int get() {
+int get() 
+{
     the_owner = this_player();
     cap_name = this_player()->query_name();
     return 1;
 }
 
-int drop() { return 1; }
+int drop() 
+{ 
+    return 1; 
+}
 
-int id(string str) { return str == "soul"; }
+int id(string str) 
+{ 
+    return str == "soul"; 
+}
 
-void long() {
+void long() 
+{
     write("It is transparent.\n");
 }
 
@@ -98,9 +106,11 @@ void init()
     add_action("yawn", "yawn");
 }
 
-int applaud() {
+//APPLAUD Command
+int applaud() 
+{
     if (ghost())
-	return 0;
+	    return 0;
     write("You applaud wholeheartedly.\n");
     say(cap_name + " gives a round of applause.\n");
     return 1;
@@ -108,7 +118,7 @@ int applaud() {
 
 int blush() {
     if (ghost())
-	return 0;
+	    return 0;
     write("Your cheeks are burning.\n");
     say(cap_name + " blushes.\n");
     return 1;
@@ -116,7 +126,7 @@ int blush() {
 
 int bounce() {
     if (ghost())
-	return 0;
+	    return 0;
     write("B O I N G !!\n");
     say(cap_name + " bounces around.\n");
     return 1;

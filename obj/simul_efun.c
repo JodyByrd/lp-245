@@ -118,6 +118,7 @@ void log_file(string file,string str)
     int *st;
 
     file_name = "/log/" + file;
+    
 #ifdef COMPAT_FLAG
     if (sizeof(regexp(({file}), "/")) || file[0] == '.' || sizeof(file) > 30 )
     {
@@ -482,14 +483,15 @@ string creator(object ob)
 }
 
 //---------------------------------------------------------------------------
-varargs void add_action(string fun, string cmd, int flag)
+varargs void add_action(string func, string cmd, int flag)
 {
-    if (fun == "exit")
+    if (func == "exit")
         raise_error("Illegal to define a command to the exit() function.\n");
 
     efun::set_this_object(previous_object());
+    
     if (cmd)
-        efun::add_action(fun, cmd, flag);
+        efun::add_action(func, cmd, flag);
 }
 
 //---------------------------------------------------------------------------

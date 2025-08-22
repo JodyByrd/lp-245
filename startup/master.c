@@ -736,7 +736,8 @@ object connect ()
 
 {
 
-    debug_message("Connecting...\n");
+    //2025-08-20 testing for a startup bug
+    //debug_message("Connecting...\n");
 
     //
     object ob = clone_object("obj/Player/player");

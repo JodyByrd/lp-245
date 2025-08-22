@@ -202,9 +202,13 @@ void reset(int arg)
     level = -1;
     name = "logon";
     cap_name = "Logon";
-    msgin = "arrives"; msgout = "leaves";
+    
+    msgin = "arrives"; 
+    msgout = "leaves";
+    
     mmsgin = "arrives in a puff of smoke";
     mmsgout = "disappears in a puff of smoke";
+    
     title = "the title less";
     al_title = "neutral";
     gender = -1; /* Illegal value, so it will be changed! */
@@ -461,7 +465,7 @@ static void wiz_commands()
     add_action("local_commands", "localcmd");
     add_action("wiz_score_list", "wizlist");
     add_action("force_player", "force");
-    add_action("spell_zap", "zap");
+    add_action("cmd_spell_zap", "zap");
     add_action("stat", "stat");
     add_action("heal", "heal");
     add_action("update_object", "update");
@@ -1368,12 +1372,17 @@ static void move_player_to_start3(mixed where) {
      * crashed, and the values of the player was saved.
      */
     set_heart_beat(1);
+
     add_standard_commands();
+
     if (level >= 20)
         wiz_commands();
+
     if (level >= 21)
         wiz_commands2();
-    move_object(clone_object("obj/soul"), myself);
+
+    move_object(clone_object("obj/Soul/soul"), myself);
+
     if (tot_value) {
         write("You find " + tot_value + " coins of your lost money!\n");
         money += tot_value;
@@ -1452,12 +1461,15 @@ int cat_file(string path)
     return 1;
 }
 
-static int help(string what) {
-    if (what == "wizard" && level >= 20) {
+static int help(string what) 
+{
+    if (what == "wizard" && level >= 20) 
+    {
         cat("/doc/wiz_help");
         return 1;
     }
-    if (what) {
+    if (what) 
+    {
         cat("/doc/helpdir/" + what);
         return 1;
     }
@@ -1635,7 +1647,8 @@ static int stat(string name)
     ob = present(name, environment());
     if (!ob || !living(ob))
         ob = find_living(it);
-    if (!ob) {
+    if (!ob) 
+    {
         write("No such person is playing now.\n");
         return 1;
     }
@@ -1898,12 +1911,16 @@ int query_soaked()
     return soaked;
 }
 
-int second_life() {
+int second_life() 
+{
+
 #if 1
     object death_mark;
 #endif
+
     if (level >= 20)
         return illegal_patch("second_life");
+    
     make_scar();
     ghost = 1;
     if (level > 1)
@@ -1943,7 +1960,8 @@ int second_life() {
     return 1;
 }
 
-int remove_ghost() {
+int remove_ghost() 
+{
     if (!ghost)
         return 0;
     write("You feel a very strong force.\n");
@@ -2157,7 +2175,8 @@ int spell_fire_ball(string str)
     return 1;
 }
 
-static int spell_zap(string str)
+//ZAP Command
+static int cmd_spell_zap(string str)
 {
     object ob;
     if (!str)
@@ -2435,17 +2454,21 @@ static int home() {
     return 1;
 }
 
-mixed valid_write(string str) {
+mixed valid_write(string str) 
+{
     string who, file, owner;
 
     owner = name;
-    if (previous_object() && previous_object() != this_object()) {
+    if (previous_object() && previous_object() != this_object()) 
+    {
         if (sscanf(object_name(previous_object()), "players/%s/", who) == 1)
             owner = who;
     }
-    if (str[0] != '/') {
+    if (str[0] != '/') 
+    {
         /* Prepend the name of the wizard that created the object (if any) */
-        if (previous_object() && previous_object() != this_object()) {
+        if (previous_object() && previous_object() != this_object()) 
+        {
             str = "players/" + owner + "/" + str;
             return str;
         }
@@ -2454,12 +2477,14 @@ mixed valid_write(string str) {
         else
             str = "/" + str;
     }
-    if (sscanf(str, "/players/%s/%s", who, file) == 2) {
+    if (sscanf(str, "/players/%s/%s", who, file) == 2) 
+    {
         if (who == owner || level > 23)
             return "players/" + who + "/" + file;
         return check_access_list("players/", who, file);
     }
-    if (sscanf(str, "/log/%s", who) == 1) {
+    if (sscanf(str, "/log/%s", who) == 1) 
+    {
         if (level < 24 && who[0] >= 'A' && who[0] <= 'Z')
             return 0;
         return "log/" + who;
@@ -2520,7 +2545,8 @@ static int remove_file(string str) {
     return 1;
 }
 
-static int local_commands() {
+static int local_commands() 
+{
     localcmd();
     return 1;
 }

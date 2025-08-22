@@ -288,7 +288,7 @@ int hit_player(int dam)
 	    	attacker_ob->add_alignment(ADJ_ALIGNMENT(alignment));
 	    	attacker_ob->add_exp(experience / 35);
 		}
-		corpse = clone_object("obj/corpse");
+		corpse = clone_object("obj/Death/corpse");
 		corpse->set_name(name);
 		transfer_all_to(corpse);
 		move_object(corpse, environment(this_object()));

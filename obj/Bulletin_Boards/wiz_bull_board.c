@@ -15,16 +15,19 @@ static string  *messages, *headers;
 static int line, looked_at;
 static object curr_writer;
 
-int id(string str) {
+int id(string str) 
+{
 	return str == "board" || str == "bulletin board" || str == "bulletinboard";
 }
 
-void long() {
+void long() 
+{
 	int ind;
 	write("This is a bulletin board.\n");
 	write("Usage : note <headline>, read/remove <message number>\n");
 	write("        store <message number> <file name>\n");
-	if (!msg_num) {
+	if (!msg_num) 
+	{
 		write("The board is empty.\n");
 		return;
 	}
@@ -37,28 +40,33 @@ void long() {
 	say(this_player()->query_name() + " studies the bulletin board.\n");
 	*/
 	ind = 0;
-	while (ind < msg_num) {
+	while (ind < msg_num) 
+	{
 		write(ind + 1 + ":\t" + headers[ind] + "\n");
 		ind++;
 	}
 }
 
-string short() {
+string short() 
+{
 	return "A bulletin board";
 }
 
-int get() {
+int get() 
+{
 	write("It is firmly secured to the ground.\n");
 	return 0;
 }
 
-void init() {
+void init() 
+{
 	add_action("new_msg", "note");
 	add_action("read_msg", "read");
 	add_action("remove_msg", "remove");
 	add_action("move_msg", "move");
 	add_action("store_msg", "store");
-	if (!looked_at) {
+	if (!looked_at) 
+	{
 	        int i;
 		string * arr;
 		messages = allocate(30);
@@ -68,13 +76,15 @@ void init() {
 		    return;
 		arr = explode(tmp_head, "\n**\n");
 		i = 0;
-		while(i < sizeof(arr)) {
+		while(i < sizeof(arr)) 
+		{
 		    headers[i] = arr[i];
 		    i++;
 		}
 		arr = explode(tmp_text, "\n**\n");
 		i = 0;
-		while(i < sizeof(arr)) {
+		while(i < sizeof(arr)) 
+		{
 		    messages[i] = arr[i];
 		    i++;
 		}
@@ -83,7 +93,8 @@ void init() {
 	}
 }
 
-void reset(int arg) {
+void reset(int arg) 
+{
 	if (arg)
 		if (!random(5)) {
 			say("A small gnome appears and secures some " +
@@ -92,7 +103,8 @@ void reset(int arg) {
 		}
 }
 
-int save_board() {
+int save_board() 
+{
 	int ind;
 	ind = 1;
 	tmp_head = implode(headers, "\n**\n") + "\n**\n";
