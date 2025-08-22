@@ -21,8 +21,9 @@ void create_death()
 
 	object death;
 
-	death = clone_object("/obj/death/death");
-	move_object(death, "/room/death/death_room");
+	death = clone_object("/obj/Death/death");
+	move_object(death, "/room/Death/death_room");
+	
 }
 
 /*

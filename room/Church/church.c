@@ -137,6 +137,7 @@ int close(string str)
 
 int push(string str)
 {
+	
     if (str && str != "button")
 		return 0;
     if ("room/Church/elevator"->call_elevator(2))
